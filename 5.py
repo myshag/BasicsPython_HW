@@ -6,3 +6,26 @@
 # выполнение программы завершается. Если специальный символ введен после нескольких чисел,
 # то вначале нужно добавить сумму этих чисел к полученной ранее сумме и
 # после этого завершить программу.
+
+def sum_func():
+    sum=0
+    while True:
+        src = input("Введите несколько чисел через пробел: ").split()
+        s=0
+        for c in src:
+            if c=='q':
+                return sum
+            
+            try:
+                c=float(c)
+                s+=c
+            except (ValueError):
+                print(f"Error {c} is not Number")
+        sum+=s       
+        print(f"Сумма {s}({sum})")
+        
+
+
+print("Общая сумма",sum_func())
+
+        
