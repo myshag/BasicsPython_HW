@@ -4,11 +4,15 @@ import time
 
 class TrafficLights(tk.Frame):
 
-    def __init__(self):
-        tk.Frame.__init__(self)
+    def __init__(self, master=None):
+        tk.Frame.__init__(self,master)
+        self.runt = time.time()
+        self.pack()
         self.master.title("Traffic Lights")
         self.grid()
         self.draw()
+        self.animation()
+        
 
     def draw(self):
         self.canvas = tk.Canvas(self, width = 300, height = 400, bg = "black")
@@ -23,31 +27,27 @@ class TrafficLights(tk.Frame):
                         "green":self.light_green}
 
     def animation(self):
-        self.light("yellow","off")
-        self.canvas.update()
-        time.sleep(1)
-        self.light("yellow","on")
-        self.canvas.update()
-        self.after(4,self.animation)
-          
-        
+        self.light("red","on")
+        self.after(7000, self.light("red","off"))
+        self.after(7020, self.light("yellow","on"))
+        self.after(9030, self.light("yellow","off"))
+        self.after(9040, self.light("green","on"))
+        self.after(12000, self.light("green","off"))
+        self.after(12500,self.animation)
 
-        
 
-    def start_traffic(self):
-        self.animation()
-        self.mainloop()
-
-        
     def light(self, color:str, action:str):
+        
         if color in ["red","yellow","green"]:
+            print(str(time.time()-self.runt),color,action)
             if action=="on":
                 self.canvas.itemconfig(self.lumps[color],fill=color)
             elif action=="off":
                 self.canvas.itemconfig(self.lumps[color],fill='white')
+        self.canvas.update()
     
             
 
-
-traffic_lights = TrafficLights()
-traffic_lights.start_traffic()
+root = tk.Tk()
+app = TrafficLights(master=root)
+root.mainloop()
