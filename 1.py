@@ -6,6 +6,7 @@ class TrafficLights(tk.Frame):
 
     def __init__(self, master=None):
         tk.Frame.__init__(self,master)
+        self.master=master
         self.runt = time.time()
         self.pack()
         self.master.title("Traffic Lights")
@@ -27,13 +28,16 @@ class TrafficLights(tk.Frame):
                         "green":self.light_green}
 
     def animation(self):
-        self.light("red","on")
-        self.after(7000, self.light("red","off"))
-        self.after(7020, self.light("yellow","on"))
-        self.after(9030, self.light("yellow","off"))
-        self.after(9040, self.light("green","on"))
-        self.after(12000, self.light("green","off"))
-        self.after(12500,self.animation)
+        print("animation step:")
+        self.master.update()
+
+        self.after(7000, self.light("red", "on"))
+        self.after(0, self.light("red","off"))
+        self.after(4000, self.light("yellow","on"))
+        self.after(0, self.light("yellow","off"))
+        self.after(6000, self.light("green","on"))
+        self.after(0, self.light("green","off"))
+        self.after(0,self.animation)
 
 
     def light(self, color:str, action:str):
