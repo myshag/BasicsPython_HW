@@ -11,23 +11,66 @@
 # превышении скорости.
 
 class Car:
-    def __init__(self, speed:int, color:str, name:str, is_police:bool):
+    def __init__(self, speed:int, color:str, name:str, is_police:bool=False):
         self.speed = speed
         self.color = color
         self.name = name
         self.is_police = is_police
 
     def go(self):
-        print("Машина поехала")
+        print(f"{self.color} машина {self.name} поехала")
 
     def stop(self):
-        print("Машина остановилась")
+        print(f"{self.color} Машина {self.name} остановилась")
 
-    def turn(direction):
-        print(f"Машина повернула  {direction}")
+    def turn(self,direction):
+        print(f"{self.color} Машина {self.name} повернула  {direction}")
 
     def show_speed(self):
-        print(f"Скорость {self.speed}")
+        print(f"Машина {self.name}. Скорость: {self.speed}")
+
+
+class TownCar(Car):
+    def show_speed(self):
+        if self.speed>60:
+            print(f"Превышение огран. скорости 60 км/ч: {self.speed}")
+
+class SportCar(Car):
+    pass
+
+class WorkCar(Car):
+    def show_speed(self):
+        if self.speed>60:
+            print(f"Превышение огран. скорости 40 км/ч: {self.speed}")
+
+class PoliceCar(Car):
+    pass
+
+
+townCar = TownCar(100, "Черная", "рабочая машина")
+townCar.go()
+townCar.turn("Направо")
+townCar.stop()
+townCar.show_speed()
+
+sportCar = SportCar(100, "зеленая", "Спортивная")
+sportCar.go()
+sportCar.turn("Направо")
+sportCar.stop()
+sportCar.show_speed()
+
+workCar = WorkCar(100, "Красная", "рабочая машина")
+workCar.go()
+workCar.turn("Направо")
+workCar.stop()
+workCar.show_speed()
+
+policeCar = PoliceCar(100, "белая", "полицейская машина",True)
+policeCar.go()
+policeCar.turn("Направо")
+policeCar.stop()
+policeCar.show_speed()
+
 
 
 
