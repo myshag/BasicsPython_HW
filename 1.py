@@ -12,3 +12,31 @@
 # Подсказка: сложение элементов матриц выполнять поэлементно 
 # — первый элемент первой строки первой матрицы складываем 
 # с первым элементом первой строки второй матрицы и т.д.
+
+class Matrix():
+    def __init__(self,arr):
+        self.arr = arr
+
+    def __str__(self):
+        s=""
+
+        for y in  self.arr:
+            s+="| "
+            for x in  y:
+                s+=str(x)+" "
+            s+="|\n"
+        return s
+
+    def __sum__(self,other):
+        for y in  self.arr
+        
+
+
+
+
+A = Matrix([[1,2,3],[4,5,6],[7,8,9]])
+B = Matrix([[60,6,6],[5,55,6],[7,58,9]])
+C = Matrix([[61,2,63],[40,55,56],[37,38,39]])
+print("A:", A,sep="\n")
+print("B:", B,sep="\n")
+print("C:", C,sep="\n")
