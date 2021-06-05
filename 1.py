@@ -27,16 +27,28 @@ class Matrix():
             s+="|\n"
         return s
 
-    def __sum__(self,other):
-        for y in  self.arr
+
+    def __add__(self,other):
+        def addarr(a:list,b:list):
+            return [a[i]+b[i] for i in range(len(a))]
+
+        z = []
+        for i in range(len(self.arr[0])):
+            z.append(addarr(self.arr[i], other.arr[i]))
+        return Matrix(z)
+
         
 
 
 
 
-A = Matrix([[1,2,3],[4,5,6],[7,8,9]])
-B = Matrix([[60,6,6],[5,55,6],[7,58,9]])
-C = Matrix([[61,2,63],[40,55,56],[37,38,39]])
+A = Matrix([[1,1,1],[1,1,1],[1,1,1]])
+B = Matrix([[2,2,2],[2,2,2],[2,2,2]])
+
 print("A:", A,sep="\n")
 print("B:", B,sep="\n")
-print("C:", C,sep="\n")
+#print("C:", C,sep="\n")
+z = A + B
+
+print(z)
+
